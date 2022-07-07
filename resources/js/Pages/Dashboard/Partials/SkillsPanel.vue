@@ -27,13 +27,33 @@ import RoundedButton from '../../../Components/RoundedButton.vue';
         </rounded-button>
     </template>
     <template #body>
-            <Skill
+        <Skill
             name="PHP"
             since="7 Years"
             desc="Fooling around"
         ></Skill>
 
-            <Skill
+        <Skill
+            name="Symfony"
+            since="9 Years"
+            desc="Fooling around"
+        ></Skill>
+        <Skill
+            name="Symfony"
+            since="9 Years"
+            desc="Fooling around"
+        ></Skill>
+        <Skill
+            name="Symfony"
+            since="9 Years"
+            desc="Fooling around"
+        ></Skill>
+        <Skill
+            name="Symfony"
+            since="9 Years"
+            desc="Fooling around"
+        ></Skill>
+        <Skill
             name="Symfony"
             since="9 Years"
             desc="Fooling around"

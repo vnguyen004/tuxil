@@ -3,15 +3,15 @@ import RoundedButton from './RoundedButton.vue';
 
 defineProps({
     name: {
-        type: Text,
+        type: String,
         required: true
     },
     since: {
-        type: Text,
+        type: String,
         required: true
     },
     desc: {
-        type: Text,
+        type: String,
         required: true
     }
 })

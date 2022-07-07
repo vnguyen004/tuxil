@@ -33,18 +33,12 @@ import ReferencesPanel from './Partials/ReferencesPanel.vue';
                     </div>
 
                     <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-3">
-
                         <work-experience-panel></work-experience-panel>
 
                         <skills-panel></skills-panel>
 
                         <references-panel></references-panel>
-
-
-
-
                     </div>
-
                 </div>
             </div>
         </div>

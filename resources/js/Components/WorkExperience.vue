@@ -3,23 +3,23 @@ import RoundedButton from './RoundedButton.vue'
 
 defineProps({
     company: {
-        type: Text,
+        type: String,
         required: true,
     },
     jobTitle: {
-        type: Text,
+        type: String,
         required: true
     },
     dateFrom: {
-        type: Text,
+        type: String,
         required: true
     },
     dateTo: {
-        type: Text,
+        type: String,
         required: true
     },
     summary: {
-        type: Text,
+        type: String,
         required: true
     }
 })
