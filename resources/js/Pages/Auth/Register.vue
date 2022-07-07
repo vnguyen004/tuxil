@@ -10,9 +10,11 @@ import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
 
 const form = useForm({
     name: '',
+    username: '',
     email: '',
     password: '',
     password_confirmation: '',
+    is_public: false,
     terms: false,
 });
 
@@ -44,6 +46,19 @@ const submit = () => {
                     required
                     autofocus
                     autocomplete="name"
+                />
+            </div>
+
+            <div class="mt-4">
+                <JetLabel for="username" value="Username" />
+                <JetInput
+                    id="username"
+                    v-model="form.username"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autofocus
+                    autocomplete="username"
                 />
             </div>
 
@@ -80,6 +95,11 @@ const submit = () => {
                     required
                     autocomplete="new-password"
                 />
+            </div>
+
+            <div class="mt-4">
+                <JetLabel for="is_public" value="Is Public Profile" />
+                <JetCheckbox id="is_public" v-model:checked="form.is_public" name="is_public" />
             </div>
 
             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
