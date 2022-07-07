@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,6 +26,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_public',
+        'username',
     ];
 
     /**
@@ -48,6 +49,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_public' => 'boolean',
+        'is_admin' => 'boolean',
     ];
 
     /**
@@ -58,4 +61,17 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'user_skills')
+            ->using(UserSkill::class)
+            ->withPivot('desc', 'since')
+            ->distinct();
+    }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }
