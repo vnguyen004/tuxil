@@ -85,7 +85,7 @@ const closeShowModal = () => {
 </script>
 
 <template>
-    <Panel class="p-6 row-span-2 col-span-2" panel-title="Work Experience"
+    <Panel class="p-6 row-span-3 col-span-2" panel-title="Work Experience"
         panel-decription="Enter your work experience. Don't worry about the order, we'll sort it all out in the end. Add as many as you need.">
         <template #icon>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"

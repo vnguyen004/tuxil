@@ -87,7 +87,7 @@ const closeShowModal = () => {
 
 <template>
     <Panel
-        class="p-6 border-t border-gray-200 md:border-l"
+        class="p-6 row-span-2 border-t border-gray-200 md:border-l"
         panel-title="References"
         panel-decription="Who will say nice things about you?">
         <template #icon>
