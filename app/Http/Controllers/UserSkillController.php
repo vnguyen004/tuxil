@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class UserSkillController extends Controller
 {
@@ -31,7 +30,7 @@ class UserSkillController extends Controller
             'description' => $params['description'],
         ]);
 
-        return Inertia::location(route('dashboard'));
+        return redirect()->action([DashboardController::class, 'index']);
     }
 
     /**
@@ -48,7 +47,7 @@ class UserSkillController extends Controller
 
         $request->user()->skills()->updateExisitingPivot($skill->id, $params);
 
-        return Inertia::location((route('dashboard')));
+        return redirect()->action([DashboardController::class, 'index']);
     }
 
     /**
@@ -60,6 +59,6 @@ class UserSkillController extends Controller
     {
         $request->user()->skills()->detach($skill);
 
-        return Inertia::location(route('dashboard'));
+        return redirect()->action([DashboardController::class, 'index']);
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class UserWorkExperienceController extends Controller
 {
@@ -30,7 +29,7 @@ class UserWorkExperienceController extends Controller
 
         WorkExperience::create($params);
 
-        return Inertia::location(route('dashboard'));
+        return redirect()->action([DashboardController::class, 'index']);
     }
 
     /**
@@ -51,7 +50,7 @@ class UserWorkExperienceController extends Controller
 
         $workExperience->update($params);
 
-        return Inertia::location(route('dashboard'));
+        return redirect()->action([DashboardController::class, 'index']);
     }
 
     /**
@@ -63,6 +62,6 @@ class UserWorkExperienceController extends Controller
     {
         $workExperience->delete();
 
-        return Inertia::location(route('dashboard'));
+        return redirect()->action([DashboardController::class, 'index']);
     }
 }
