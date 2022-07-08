@@ -20,8 +20,10 @@ const colors = computed(() => `bg-transparent border-2 border-${props.bgColor}-5
 </script>
 <template>
 <Popper hover placement="top" :content="tooltip">
-    <button
-        :class="colors">
+    <button v-if="bgColor === 'indigo'" class="text-purple-700 rounded-full p-0.5 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium  text-sm  text-center ml-1">
+        <slot />
+    </button>
+    <button v-else class="text-gray-900 hover:text-white border p-0.5 border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-sm text-center ml-1">
         <slot />
     </button>
 </Popper>
