@@ -17,6 +17,6 @@ class Skill extends Model
     {
         return $this->belongsToMany(User::class, 'user_skills')
             ->using(UserSkill::class)
-            ->withPivot('desc', 'since');
+            ->withPivot('description', 'skill_since');
     }
 }

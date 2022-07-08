@@ -14,8 +14,8 @@ return new class() extends Migration {
     {
         Schema::create('user_skills', function (Blueprint $table) {
             $table->primary(['user_id', 'skill_id']);
-            $table->text('desc');
-            $table->date('since')->nullable();
+            $table->text('description');
+            $table->date('skill_since')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
         });

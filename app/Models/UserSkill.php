@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
@@ -12,12 +13,18 @@ class UserSkill extends Pivot
     protected $table = 'user_skills';
 
     protected $fillable = [
-        'desc',
+        'description',
+        'skill_since',
     ];
 
     protected $casts = [
-        'since' => 'date',
+        'skill_since' => 'date',
     ];
+
+    public function setSkillSince($since)
+    {
+        $this->attributes['skill_since'] = Carbon::parse($since);
+    }
 
     public function user()
     {

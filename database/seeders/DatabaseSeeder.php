@@ -64,8 +64,8 @@ class DatabaseSeeder extends Seeder
         collect(User::all())->map(function (User $user) {
             collect(Skill::all()->random(3))->map(function (Skill $skill) use ($user) {
                 $user->skills()->attach($skill, [
-                    'desc' => $this->faker->sentence(),
-                    'since' => (Carbon::now())->subYears(rand(1, 10)),
+                    'description' => $this->faker->sentence(),
+                    'skill_since' => (Carbon::now())->subYears(rand(1, 10)),
                 ]);
             });
         });

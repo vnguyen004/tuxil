@@ -67,7 +67,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Skill::class, 'user_skills')
             ->using(UserSkill::class)
-            ->withPivot('desc', 'since')
+            ->withPivot('description', 'skill_since')
             ->distinct();
     }
 

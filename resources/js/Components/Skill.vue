@@ -1,17 +1,11 @@
 <script setup>
 import RoundedButton from './RoundedButton.vue';
+import {defineEmits} from 'vue'
 
+const emit = defineEmits(['remove', 'edit'])
 defineProps({
-    name: {
-        type: String,
-        required: true
-    },
-    since: {
-        type: String,
-        required: true
-    },
-    desc: {
-        type: String,
+    skill: {
+        type: Object,
         required: true
     }
 })
@@ -20,11 +14,16 @@ defineProps({
 <template>
 <div class="rounded-md border p-4 shadow bg-white">
     <div class="flex w-full items-center justify-between border-b pb-2">
-        <div class="text-lg font-bold text-slate-700">{{ name }}</div>
+        <div class="text-lg font-bold text-slate-700">{{ skill.name }}</div>
         <div class="flex justify-between items-center">
             <div class="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                {{ since }} </div>
-            <rounded-button class="ml-2" bg-color="black" text-color="white"
+                {{ skill.skill_since }}
+            </div>
+            <rounded-button
+                @click="emit('remove', skill)"
+                class="ml-2"
+                bg-color="black"
+                text-color="white"
                 tooltip="Remove Skill">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                     fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
@@ -35,7 +34,7 @@ defineProps({
         </div>
     </div>
     <div class="mt-2">
-        <div class="text-sm text-neutral-600">{{ desc }}</div>
+        <div class="text-sm text-neutral-600">{{ skill.description }}</div>
     </div>
 </div>
 </template>
