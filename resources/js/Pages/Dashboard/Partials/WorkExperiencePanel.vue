@@ -140,7 +140,7 @@ const closeShowModal = () => {
             class="ml-3"
             :class="{ 'opacity-25': removeForm.processing }"
             :disabled="removeForm.processing"
-            @click="removeExperience"
+            @click.prevent="removeExperience"
         >
             Remove
         </JetButton>
@@ -206,7 +206,7 @@ const closeShowModal = () => {
             class="ml-3 bg-blue-500 hover:bg-blue-500 focus:boder-blue-700 focus:border-blue-700 focus:ring-blue-200 active:bg-blue-600"
             :class="{ 'opacity-25': showForm.processing }"
             :disabled="showForm.processing"
-            @click="showAction"
+            @click.prevent="showAction"
         >
             Save Skill
         </JetButton>

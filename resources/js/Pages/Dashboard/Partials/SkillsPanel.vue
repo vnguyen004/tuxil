@@ -144,7 +144,7 @@ const closeShowModal = () => {
             class="ml-3"
             :class="{ 'opacity-25': skillRemoveForm.processing }"
             :disabled="skillRemoveForm.processing"
-            @click="removeSkill"
+            @click.prevent="removeSkill"
         >
             Remove
         </JetButton>
@@ -195,7 +195,7 @@ const closeShowModal = () => {
             class="ml-3 bg-blue-500 hover:bg-blue-500 focus:boder-blue-700 focus:border-blue-700 focus:ring-blue-200 active:bg-blue-600"
             :class="{ 'opacity-25': showSkillForm.processing }"
             :disabled="showSkillForm.processing"
-            @click="showAction"
+            @click.prevent="showAction"
         >
             Save Skill
         </JetButton>
