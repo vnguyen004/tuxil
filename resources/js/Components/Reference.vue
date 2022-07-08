@@ -1,17 +1,11 @@
 <script setup>
 import RoundedButton from './RoundedButton.vue';
+import { defineEmits } from 'vue'
 
+const emit = defineEmits(['remove', 'edit'])
 defineProps({
-    fullName: {
-        type: String,
-        required: true
-    },
-    emailAddress: {
-        type: String,
-        required: true
-    },
-    phoneNumber: {
-        type: String,
+    reference: {
+        type: Object,
         required: true
     }
 })
@@ -22,16 +16,22 @@ defineProps({
         <div class="flex justify-between">
             <div>
                 <p class="text-sm font-bold  truncate ">
-                    {{ fullName }}
+                    {{ reference.full_name }}
                 </p>
                 <p class="text-sm text-gray-500 truncate">
-                    {{ emailAddress }}
+                    {{ reference.email_address }}
                 </p>
                 <p class="text-sm text-gray-500 truncate">
-                    {{ phoneNumber }}
+                    {{ reference.phone_number }}
                 </p>
             </div>
-            <rounded-button class="ml-2" bg-color="black" text-color="white" tooltip="Remove Reference">
+            <rounded-button
+                @click="emit('remove', reference)"
+                class="ml-2"
+                bg-color="black"
+                text-color="white"
+                tooltip="Remove Reference"
+            >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
                     viewBox="0 0 16 16">
                     <path

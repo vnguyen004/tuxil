@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\References;
 use App\Models\Skill;
 use App\Models\User;
 use App\Models\WorkExperience;
@@ -63,12 +64,17 @@ class DatabaseSeeder extends Seeder
 
         collect(User::all())->map(function (User $user) {
             // create 10 experience for all users
-            WorkExperience::factory(10)->create([
+            WorkExperience::factory(8)->create([
+                'user_id' => $user->id,
+            ]);
+
+            // create 5 references for all users
+            References::factory(5)->create([
                 'user_id' => $user->id,
             ]);
 
             // randomly assign skills to all users
-            collect(Skill::all()->random(3))->map(function (Skill $skill) use ($user) {
+            collect(Skill::all()->random(5))->map(function (Skill $skill) use ($user) {
                 $user->skills()->attach($skill, [
                     'description' => $this->faker->sentence(),
                     'skill_since' => (Carbon::now())->subYears(rand(1, 10)),

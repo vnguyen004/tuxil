@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\References;
 use App\Models\Skill;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
@@ -35,6 +36,15 @@ class DashboardController extends Controller
                     'date_to' => $workExperience->date_to?->format('M Y'),
                     'summary' => $workExperience->summary,
                     'is_current' => $workExperience->is_current,
+                ];
+            }),
+
+            'references' => collect($request->user()->references)->map(function (References $reference) {
+                return [
+                    'id' => $reference->id,
+                    'full_name' => $reference->full_name,
+                    'email_address' => $reference->email_address,
+                    'phone_number' => $reference->phone_number,
                 ];
             }),
         ]);

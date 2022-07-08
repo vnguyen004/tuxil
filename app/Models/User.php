@@ -76,6 +76,11 @@ class User extends Authenticatable
         return $this->hasMany(WorkExperience::class)->orderBy('date_from');
     }
 
+    public function references()
+    {
+        return $this->hasMany(References::class);
+    }
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
