@@ -1,11 +1,5 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Jetstream/Welcome.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import RoundedButton from '@/Components/RoundedButton.vue';
-import Skill from '@/Components/Skill.vue';
-import WorkExperience from '../../Components/WorkExperience.vue';
-import Panel from '../../Components/Panel.vue';
 import WorkExperiencePanel from './Partials/WorkExperiencePanel.vue';
 import SkillsPanel from './Partials/SkillsPanel.vue';
 import ReferencesPanel from './Partials/ReferencesPanel.vue';
@@ -32,12 +26,10 @@ import ReferencesPanel from './Partials/ReferencesPanel.vue';
                         </div>
                     </div>
 
-                    <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-3">
-                        <work-experience-panel></work-experience-panel>
-
-                        <skills-panel></skills-panel>
-
-                        <references-panel></references-panel>
+                    <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 grid-rows-3 md:grid-cols-3">
+                        <WorkExperiencePanel />
+                        <SkillsPanel />
+                        <ReferencesPanel />
                     </div>
                 </div>
             </div>
