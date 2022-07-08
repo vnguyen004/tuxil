@@ -38,10 +38,10 @@ Route::middleware([
     // Dashboard Work Experiences
     Route::post('/dashboard/experiences', [UserWorkExperienceController::class, 'store'])->name('user.experience.store');
     Route::patch('/dashboard/experience/{experience}', [UserWorkExperienceController::class, 'update'])->name('user.experience.update');
-    Route::delete('/dashboard/experience/{experience}', [UserWorkExperienceController::class, 'destroy'])->name('user.experience.detroy');
+    Route::delete('/dashboard/experience/{experience}', [UserWorkExperienceController::class, 'destroy'])->name('user.experience.destroy');
 
     // Dashboard References
     Route::post('/dashboard/references', [UserReferencesController::class, 'store'])->name('user.reference.store');
     Route::patch('/dashboard/reference/{reference}', [UserReferencesController::class, 'update'])->name('user.reference.update');
-    Route::delete('/dashboard/reference/{reference}', [UserReferencesController::class, 'destroy'])->name('user.reference.detroy');
+    Route::delete('/dashboard/reference/{reference}', [UserReferencesController::class, 'destroy'])->name('user.reference.destroy');
 });
