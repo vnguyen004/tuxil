@@ -37,7 +37,7 @@ const onRemoveClick = (experience) => {
 // trigger removal
 const removeExperience = () => {
     removeForm.delete(route('user.experience.destroy', {
-        'experience': removeForm.experience.id
+        'work_experience': removeForm.experience.id
     }), {
         preserveScroll: true,
         onSuccess: () => closeRemoveModal(),
@@ -69,7 +69,9 @@ const showAction = () => {
     if (showForm.isEdit === true) {
 
     } else {
-        showForm.post(route('user.skill.store'), {
+        showForm.post(route('user.expereince.store', {
+            'work_experience': showForm.experience.id
+        }), {
             preserveScroll: true,
             onSuccess: () => closeShowModal(),
             onError: () => {},
