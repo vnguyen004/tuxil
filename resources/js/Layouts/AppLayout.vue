@@ -1,14 +1,14 @@
 <script setup>
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
 import JetApplicationMark from '@/Jetstream/ApplicationMark.vue';
 import JetBanner from '@/Jetstream/Banner.vue';
 import JetDropdown from '@/Jetstream/Dropdown.vue';
 import JetDropdownLink from '@/Jetstream/DropdownLink.vue';
 import JetNavLink from '@/Jetstream/NavLink.vue';
 import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue';
-
+import { useToast } from 'vue-toastification';
 defineProps({
     title: String,
 });
@@ -26,11 +26,20 @@ const switchToTeam = (team) => {
 const logout = () => {
     Inertia.post(route('logout'));
 };
+
+const toast = useToast();
+
+if (usePage().props.value.flash.success) {
+    toast.sucess(usePage().props.value.flash.success)
+} else if (usePage().props.value.flash.error) {
+    toast.error(usePage().props.value.flash.error)
+}
 </script>
 
 <template>
     <div>
         <Head :title="title" />
+
 
         <JetBanner />
 

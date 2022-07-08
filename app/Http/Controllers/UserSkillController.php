@@ -30,7 +30,7 @@ class UserSkillController extends Controller
             'description' => $params['description'],
         ]);
 
-        return redirect()->action([DashboardController::class, 'index']);
+        return redirect()->action([DashboardController::class, 'index'])->with('success', 'Successfully saved skill');
     }
 
     /**
@@ -47,7 +47,7 @@ class UserSkillController extends Controller
 
         $request->user()->skills()->updateExisitingPivot($skill->id, $params);
 
-        return redirect()->action([DashboardController::class, 'index']);
+        return redirect()->action([DashboardController::class, 'index'])->with('success', 'Skill details');
     }
 
     /**
@@ -59,6 +59,6 @@ class UserSkillController extends Controller
     {
         $request->user()->skills()->detach($skill);
 
-        return redirect()->action([DashboardController::class, 'index']);
+        return redirect()->action([DashboardController::class, 'index'])->with('success', 'Successfully removed skill');
     }
 }
