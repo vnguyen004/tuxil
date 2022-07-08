@@ -1,25 +1,11 @@
 <script setup>
 import RoundedButton from './RoundedButton.vue'
+import {defineEmits} from 'vue'
 
+const emit = defineEmits(['remove', 'edit'])
 defineProps({
-    company: {
-        type: String,
-        required: true,
-    },
-    jobTitle: {
-        type: String,
-        required: true
-    },
-    dateFrom: {
-        type: String,
-        required: true
-    },
-    dateTo: {
-        type: String,
-        required: true
-    },
-    summary: {
-        type: String,
+    experience: {
+        type: Object,
         required: true
     }
 })
@@ -28,8 +14,13 @@ defineProps({
 <template>
 <div class="rounded-md border p-5 shadow bg-white">
     <div class="flex w-full items-center justify-between border-b pb-3">
-        <div class="text-lg font-bold text-slate-700">{{ company }}</div>
-        <rounded-button bg-color="black" text-color="white" tooltip="Remove Work Experience">
+        <div class="text-lg font-bold text-slate-700">{{ experience.company_name }}</div>
+        <rounded-button
+            @click="emit('remove', experience)"
+            bg-color="black"
+            text-color="white"
+            tooltip="Remove Work Experience"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                 <path
@@ -40,12 +31,12 @@ defineProps({
 
     <div class="mt-4 mb-6">
         <div class="flex justify-between">
-            <div class="mb-3 text-xl font-bold">{{ jobTitle }}</div>
-            <div class="text-sm text-neutral-600">{{ dateFrom }} <span class="p-1 inline-block">to</span> {{ dateTo }}</div>
+            <div class="mb-3 text-xl font-bold">{{ experience.job_title }}</div>
+            <div class="text-sm text-neutral-600">{{ experience.date_from }} <span class="p-1 inline-block">to</span> {{ experience.is_current ? 'Current' : experience.date_to }}</div>
         </div>
 
         <div class="text-sm text-neutral-600">
-            {{ summary }}
+            {{ experience.summary }}
         </div>
     </div>
 </div>

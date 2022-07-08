@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Skill;
+use App\Models\WorkExperience;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -22,6 +23,18 @@ class DashboardController extends Controller
                     'name' => $skill->name,
                     'description' => $skill->pivot->description,
                     'skill_since' => $skill->pivot->skill_since->longAbsoluteDiffForHumans(),
+                ];
+            }),
+
+            'workExperiences' => collect($request->user()->workExperiences)->map(function (WorkExperience $workExperience) {
+                return [
+                    'id' => $workExperience->id,
+                    'company_name' => $workExperience->company_name,
+                    'job_title' => $workExperience->job_title,
+                    'date_from' => $workExperience->date_from->format('M Y'),
+                    'date_to' => $workExperience->date_to?->format('M Y'),
+                    'summary' => $workExperience->summary,
+                    'is_current' => $workExperience->is_current,
                 ];
             }),
         ]);

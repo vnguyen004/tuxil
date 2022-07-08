@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserSkillController;
+use App\Http\Controllers\UserWorkExperienceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,9 @@ Route::middleware([
     Route::post('/dashboard/skills', [UserSkillController::class, 'store'])->name('user.skill.store');
     Route::patch('/dashboard/skill/{skill}', [UserSkillController::class, 'update'])->name('user.skill.update');
     Route::delete('/dashboard/skill/{skill}', [UserSkillController::class, 'destroy'])->name('user.skill.destroy');
+
+    // Dashboard Work Experiences
+    Route::post('/dashboard/experiences', [UserWorkExperienceController::class, 'store'])->name('user.experience.store');
+    Route::patch('/dashboard/experiences/{experience}', [UserWorkExperienceController::class, 'update'])->name('user.experience.update');
+    Route::delete('/dashboard/experience/{experience}', [UserWorkExperienceController::class, 'destroy'])->name('user.experience.detroy');
 });

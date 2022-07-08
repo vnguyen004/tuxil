@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Skill;
 use App\Models\User;
+use App\Models\WorkExperience;
 use Carbon\Carbon;
 use Faker\Generator;
 use Illuminate\Container\Container;
@@ -60,8 +61,13 @@ class DatabaseSeeder extends Seeder
         // create 10 skills
         Skill::factory(10)->create();
 
-        // randomly assign skills to all users
         collect(User::all())->map(function (User $user) {
+            // create 10 experience for all users
+            WorkExperience::factory(10)->create([
+                'user_id' => $user->id,
+            ]);
+
+            // randomly assign skills to all users
             collect(Skill::all()->random(3))->map(function (Skill $skill) use ($user) {
                 $user->skills()->attach($skill, [
                     'description' => $this->faker->sentence(),
